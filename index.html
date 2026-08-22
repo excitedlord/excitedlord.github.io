@@ -17,7 +17,7 @@
   <title>Sujith K. Mandala — Data Scientist & AI Engineer</title>
 
   <link rel="icon"
-    href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🧠</text></svg>" />
+    href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.85em' font-size='90'>♚</text></svg>" />
 
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -27,9 +27,24 @@
     rel="stylesheet" />
 
   <link rel="stylesheet" href="assets/css/styles.css" />
+
+  <noscript>
+    <style>
+      .preloader { display: none !important; }
+      body.preloading .aurora,
+      body.preloading main,
+      body.preloading .nav,
+      body.preloading .footer { visibility: visible !important; }
+    </style>
+  </noscript>
 </head>
 
-<body>
+<body class="preloading">
+  <!-- Preloader -->
+  <div class="preloader" id="preloader" aria-hidden="true">
+    <span class="preloader-mark" id="preloaderMark"></span>
+  </div>
+
   <!-- Animated aurora background -->
   <div class="aurora" aria-hidden="true">
     <span class="blob blob-1"></span>

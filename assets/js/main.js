@@ -7,6 +7,34 @@
   const doc = document;
   const root = doc.documentElement;
 
+  /* ---------- Preloader ---------- */
+  const preloader = doc.getElementById("preloader");
+  const preloaderMark = doc.getElementById("preloaderMark");
+  const body = doc.body;
+
+  function revealSite() {
+    preloader?.classList.add("hide");
+    body.classList.remove("preloading");
+    preloader?.addEventListener("transitionend", () => preloader.remove(), { once: true });
+  }
+
+  if (preloader && preloaderMark) {
+    const word = "SKM";
+    let i = 0;
+    const typePreloader = () => {
+      preloaderMark.textContent = word.slice(0, i);
+      i++;
+      if (i <= word.length) {
+        setTimeout(typePreloader, 160);
+      } else {
+        setTimeout(revealSite, 450);
+      }
+    };
+    typePreloader();
+  } else {
+    body.classList.remove("preloading");
+  }
+
   /* ---------- Theme ---------- */
   const themeToggle = doc.getElementById("themeToggle");
   const savedTheme = localStorage.getItem("theme");
