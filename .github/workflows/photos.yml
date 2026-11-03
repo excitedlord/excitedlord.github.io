@@ -3,7 +3,7 @@ name: Update photo gallery
 on:
   push:
     branches: [main]
-    paths: ["assets/photos/**"]
+    paths: ["assets/photos/**", ".github/scripts/**"]
   workflow_dispatch:
 
 permissions:
@@ -16,11 +16,13 @@ jobs:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0   # full history, so upload dates are known
-      - name: Build photos.json and thumbnails
+      - name: Install Pillow
+        run: pip install pillow
+      - name: Watermark photos and build photos.json
         run: python3 .github/scripts/build_photos.py
       - name: Commit changes
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add assets/photos.json assets/thumbs
+          git add -A assets/photos.json assets/thumbs assets/display
           git diff --cached --quiet || (git commit -m "Update photo gallery" && git push)
