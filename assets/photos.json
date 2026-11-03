@@ -1,3 +1,13 @@
 {
-  "sections": []
+  "sections": [
+    {
+      "title": "Kuala Lumpur",
+      "photos": [
+        {
+          "src": "assets/display/Kuala%20Lumpur/IMG_4200.jpg",
+          "thumb": "assets/thumbs/Kuala%20Lumpur/IMG_4200.jpg"
+        }
+      ]
+    }
+  ]
 }
