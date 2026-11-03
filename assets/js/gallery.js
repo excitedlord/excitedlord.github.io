@@ -1,6 +1,26 @@
 /* The photo list comes from assets/photos.json, which a GitHub Action
    rebuilds whenever you add images to assets/photos/ (newest first). */
 (function () {
+  /* ---- shared site behaviour (same as main.js): theme, mobile menu, year ---- */
+  const root = document.documentElement;
+  const themeToggle = document.getElementById("themeToggle");
+  themeToggle?.addEventListener("click", () => {
+    const next = root.getAttribute("data-theme") === "light" ? "dark" : "light";
+    root.setAttribute("data-theme", next);
+    try { localStorage.setItem("theme", next); } catch (e) {}
+  });
+
+  const menuBtn = document.getElementById("menuBtn");
+  const navLinks = document.getElementById("navLinks");
+  menuBtn?.addEventListener("click", () => { menuBtn.classList.toggle("open"); navLinks.classList.toggle("open"); });
+  navLinks?.querySelectorAll("a").forEach((a) => a.addEventListener("click", () => {
+    menuBtn.classList.remove("open"); navLinks.classList.remove("open");
+  }));
+
+  const yearEl = document.getElementById("year");
+  if (yearEl) yearEl.textContent = new Date().getFullYear();
+
+  /* ---- gallery ---- */
   const grid = document.getElementById("grid");
   const status = document.getElementById("status");
   const viewer = document.getElementById("viewer");
