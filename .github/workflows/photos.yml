@@ -1,0 +1,26 @@
+name: Update photo gallery
+
+on:
+  push:
+    branches: [main]
+    paths: ["assets/photos/**"]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0   # full history, so upload dates are known
+      - name: Build photos.json and thumbnails
+        run: python3 .github/scripts/build_photos.py
+      - name: Commit changes
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add assets/photos.json assets/thumbs
+          git diff --cached --quiet || (git commit -m "Update photo gallery" && git push)
