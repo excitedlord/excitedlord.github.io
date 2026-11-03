@@ -16,14 +16,11 @@
 
   <main>
     <ul id="grid" class="grid" aria-label="Photographs"></ul>
-    <noscript><p class="empty">This gallery needs JavaScript to load the photographs.</p></noscript>
+    <p id="status" class="empty" role="status"></p>
   </main>
 
   <dialog id="viewer" aria-label="Photograph viewer">
-    <figure>
-      <img id="viewer-img" alt="">
-      <figcaption id="viewer-cap"></figcaption>
-    </figure>
+    <img id="viewer-img" alt="">
     <button class="ctl close" type="button" aria-label="Close viewer">&times;</button>
     <button class="ctl prev" type="button" aria-label="Previous photograph">&lsaquo;</button>
     <button class="ctl next" type="button" aria-label="Next photograph">&rsaquo;</button>
