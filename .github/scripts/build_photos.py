@@ -22,7 +22,7 @@ SIZE = 0.020        # text height as a fraction of image width
 SPACING = 0.28      # extra letter spacing, as a fraction of text height
 X_POS = 0.64        # horizontal centre of the text, as a fraction of image width (0.5 = middle, higher = further right)
 Y_POS = 0.70        # vertical centre of the text, as a fraction of image height (0 = top, 1 = bottom)
-OPACITY = 0.42      # 0-1
+OPACITY = 0.15      # 0-1
 # -----------------------------------------------------------------------------
 
 PHOTOS = Path("assets/photos")
