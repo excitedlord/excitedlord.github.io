@@ -27,6 +27,12 @@
 .gallery-intro { color: var(--text-dim); font-size: .95rem; margin-bottom: 40px; }
 .gallery-status { color: var(--text-dim); }
 
+.group + .group { margin-top: 64px; }
+.group-title {
+  font-size: clamp(1.15rem, 2.4vw, 1.5rem);
+  margin: 0 0 20px;
+}
+
 /* Grid: columns keep each photo's own proportions */
 .grid {
   list-style: none;
