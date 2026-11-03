@@ -18,10 +18,10 @@ from PIL import Image, ImageDraw, ImageFont, ImageOps
 
 # ---- watermark settings (change these, push, and everything is rebuilt) ----
 TEXT = "SUJITH K MANDALA"
-SIZE = 0.030        # text height as a fraction of image width
+SIZE = 0.020        # text height as a fraction of image width
 SPACING = 0.28      # extra letter spacing, as a fraction of text height
-Y_POS = 0.90        # vertical centre of the text, as a fraction of image height (0 = top, 1 = bottom)
-OPACITY = 0.62      # 0-1
+Y_POS = 0.70        # vertical centre of the text, as a fraction of image height (0 = top, 1 = bottom)
+OPACITY = 0.42      # 0-1
 # -----------------------------------------------------------------------------
 
 PHOTOS = Path("assets/photos")
