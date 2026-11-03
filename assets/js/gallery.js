@@ -1,47 +1,40 @@
-/* ------------------------------------------------------------------
-   Add your photographs here. Put the files in assets/photos/.
-   - src:   the full-size image (shown in colour when opened)
-   - thumb: optional smaller version for the grid (faster loading)
-   - title: shown under the photo when opened
-   - alt:   a short description for screen readers
-------------------------------------------------------------------- */
-const photos = [
-  { src: "assets/photos/photo-01.jpg", thumb: "assets/photos/thumbs/photo-01.jpg", title: "Title one",   alt: "Describe photo one" },
-  { src: "assets/photos/photo-02.jpg", thumb: "assets/photos/thumbs/photo-02.jpg", title: "Title two",   alt: "Describe photo two" },
-  { src: "assets/photos/photo-03.jpg", thumb: "assets/photos/thumbs/photo-03.jpg", title: "Title three", alt: "Describe photo three" },
-  { src: "assets/photos/photo-04.jpg", thumb: "assets/photos/thumbs/photo-04.jpg", title: "Title four",  alt: "Describe photo four" },
-  { src: "assets/photos/photo-05.jpg", thumb: "assets/photos/thumbs/photo-05.jpg", title: "Title five",  alt: "Describe photo five" },
-  { src: "assets/photos/photo-06.jpg", thumb: "assets/photos/thumbs/photo-06.jpg", title: "Title six",   alt: "Describe photo six" }
-];
-
+/* The photo list comes from assets/photos.json, which a GitHub Action
+   rebuilds whenever you add images to assets/photos/ (newest first). */
 (function () {
   const grid = document.getElementById("grid");
+  const status = document.getElementById("status");
   const viewer = document.getElementById("viewer");
   const img = document.getElementById("viewer-img");
-  const cap = document.getElementById("viewer-cap");
+  let photos = [];
   let current = 0;
 
-  if (!photos.length) {
-    grid.outerHTML = '<p class="empty">No photographs yet.</p>';
-    return;
-  }
+  fetch("assets/photos.json", { cache: "no-cache" })
+    .then((r) => { if (!r.ok) throw new Error(r.status); return r.json(); })
+    .then((list) => {
+      photos = list;
+      if (!photos.length) { status.textContent = "No photographs yet."; return; }
+      render();
+    })
+    .catch(() => { status.textContent = "The photographs could not be loaded. Try again later."; });
 
-  photos.forEach((p, i) => {
-    const li = document.createElement("li");
-    const btn = document.createElement("button");
-    btn.type = "button";
-    btn.className = "tile";
-    btn.setAttribute("aria-label", "Open " + (p.title || "photograph " + (i + 1)) + " in colour");
-    const thumb = document.createElement("img");
-    thumb.src = p.thumb || p.src;
-    thumb.alt = p.alt || "";
-    thumb.loading = "lazy";
-    thumb.decoding = "async";
-    btn.appendChild(thumb);
-    btn.addEventListener("click", () => open(i));
-    li.appendChild(btn);
-    grid.appendChild(li);
-  });
+  function render() {
+    photos.forEach((p, i) => {
+      const li = document.createElement("li");
+      const btn = document.createElement("button");
+      btn.type = "button";
+      btn.className = "tile";
+      btn.setAttribute("aria-label", "Open photograph " + (i + 1) + " in colour");
+      const thumb = document.createElement("img");
+      thumb.src = p.thumb || p.src;
+      thumb.alt = "";
+      thumb.loading = "lazy";
+      thumb.decoding = "async";
+      btn.appendChild(thumb);
+      btn.addEventListener("click", () => open(i));
+      li.appendChild(btn);
+      grid.appendChild(li);
+    });
+  }
 
   function reveal() {
     requestAnimationFrame(() => requestAnimationFrame(() => img.classList.add("is-colour")));
@@ -49,14 +42,11 @@ const photos = [
 
   function show(i) {
     current = (i + photos.length) % photos.length;
-    const p = photos[current];
     img.classList.remove("is-colour");
     img.onload = reveal;
-    img.alt = p.alt || "";
-    img.src = p.src;
-    cap.textContent = p.title || "";
+    img.alt = "Photograph " + (current + 1) + " of " + photos.length;
+    img.src = photos[current].src;
     if (img.complete) reveal();
-    // warm the cache for neighbours
     [current - 1, current + 1].forEach((n) => {
       new Image().src = photos[(n + photos.length) % photos.length].src;
     });
@@ -70,8 +60,6 @@ const photos = [
   viewer.querySelector(".close").addEventListener("click", () => viewer.close());
   viewer.querySelector(".prev").addEventListener("click", () => show(current - 1));
   viewer.querySelector(".next").addEventListener("click", () => show(current + 1));
-
-  // click on the dark area (not the photo) closes
   viewer.addEventListener("click", (e) => { if (e.target === viewer) viewer.close(); });
 
   document.addEventListener("keydown", (e) => {
@@ -80,7 +68,6 @@ const photos = [
     if (e.key === "ArrowRight") show(current + 1);
   });
 
-  // swipe on touch screens
   let startX = null;
   viewer.addEventListener("touchstart", (e) => { startX = e.touches[0].clientX; }, { passive: true });
   viewer.addEventListener("touchend", (e) => {
