@@ -77,7 +77,6 @@ dialog {
 }
 dialog[open] { display: grid; place-items: center; }
 dialog::backdrop { background: #000; }
-dialog figure { margin: 0; max-width: 92vw; text-align: center; }
 dialog img {
   display: block;
   max-width: 92vw;
@@ -87,7 +86,6 @@ dialog img {
   transition: filter 1.1s ease;
 }
 dialog img.is-colour { filter: grayscale(0); }
-figcaption { margin-top: .9rem; font: italic 1rem var(--serif); color: #bdbcb7; min-height: 1.5em; }
 
 .ctl {
   position: absolute;
