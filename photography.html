@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Photography · Sujith K. Mandala</title>
+  <meta name="description" content="Black-and-white photographs. Open one to see it in colour.">
+  <link rel="stylesheet" href="assets/css/gallery.css">
+</head>
+<body>
+  <header class="top">
+    <a class="back" href="index.html">Back to portfolio</a>
+    <h1>Photography</h1>
+    <p class="intro">Select a photograph to see it in colour.</p>
+  </header>
+
+  <main>
+    <ul id="grid" class="grid" aria-label="Photographs"></ul>
+    <noscript><p class="empty">This gallery needs JavaScript to load the photographs.</p></noscript>
+  </main>
+
+  <dialog id="viewer" aria-label="Photograph viewer">
+    <figure>
+      <img id="viewer-img" alt="">
+      <figcaption id="viewer-cap"></figcaption>
+    </figure>
+    <button class="ctl close" type="button" aria-label="Close viewer">&times;</button>
+    <button class="ctl prev" type="button" aria-label="Previous photograph">&lsaquo;</button>
+    <button class="ctl next" type="button" aria-label="Next photograph">&rsaquo;</button>
+  </dialog>
+
+  <script src="assets/js/gallery.js"></script>
+</body>
+</html>
