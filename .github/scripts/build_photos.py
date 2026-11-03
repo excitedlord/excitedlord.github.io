@@ -20,6 +20,7 @@ from PIL import Image, ImageDraw, ImageFont, ImageOps
 TEXT = "SUJITH K MANDALA"
 SIZE = 0.020        # text height as a fraction of image width
 SPACING = 0.28      # extra letter spacing, as a fraction of text height
+X_POS = 0.64        # horizontal centre of the text, as a fraction of image width (0.5 = middle, higher = further right)
 Y_POS = 0.70        # vertical centre of the text, as a fraction of image height (0 = top, 1 = bottom)
 OPACITY = 0.42      # 0-1
 # -----------------------------------------------------------------------------
@@ -51,7 +52,9 @@ def watermark(im):
     gap = px * SPACING
     widths = [font.getlength(c) for c in TEXT]
     total = sum(widths) + gap * (len(TEXT) - 1)
-    x = (w - total) / 2
+    x = w * X_POS - total / 2
+    margin = w * 0.02
+    x = max(margin, min(x, w - total - margin))   # keep the text inside the photo
     y = h * Y_POS - px / 2
     layer = Image.new("RGBA", im.size, (0, 0, 0, 0))
     d = ImageDraw.Draw(layer)
@@ -73,7 +76,7 @@ DISPLAY.mkdir(parents=True, exist_ok=True)
 THUMBS.mkdir(parents=True, exist_ok=True)
 
 # Rebuild everything if the watermark settings changed
-settings = f"{TEXT}|{SIZE}|{SPACING}|{Y_POS}|{OPACITY}|{MAX_EDGE}|{THUMB_W}"
+settings = f"{TEXT}|{SIZE}|{SPACING}|{X_POS}|{Y_POS}|{OPACITY}|{MAX_EDGE}|{THUMB_W}"
 stamp = hashlib.sha1(settings.encode()).hexdigest()
 stamp_file = DISPLAY / ".watermark"
 rebuild_all = not stamp_file.exists() or stamp_file.read_text().strip() != stamp
