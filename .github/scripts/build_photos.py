@@ -3,8 +3,11 @@
 
   - assets/display/<name>.jpg  watermarked copy, long edge max 2400px (shown when a photo is opened)
   - assets/thumbs/<name>.jpg   watermarked 900px-wide copy (shown in the grid)
-  - assets/photos.json         list of the above, newest upload first
+  - assets/photos.json         the gallery list, grouped into sections
 
+Folders inside assets/photos/ become titled sections: Kuala_Lumpur/ -> "Kuala Lumpur".
+Photos placed directly in assets/photos/ appear first, with no title.
+Within a section, and between sections, the newest upload comes first.
 "Upload time" = the commit that first added the original file.
 """
 import hashlib, json, subprocess, time
@@ -17,7 +20,7 @@ from PIL import Image, ImageDraw, ImageFont, ImageOps
 TEXT = "SUJITH K MANDALA"
 SIZE = 0.030        # text height as a fraction of image width
 SPACING = 0.28      # extra letter spacing, as a fraction of text height
-Y_POS = 0.70        # vertical centre of the text, as a fraction of image height (0 = top, 1 = bottom)
+Y_POS = 0.90        # vertical centre of the text, as a fraction of image height (0 = top, 1 = bottom)
 OPACITY = 0.62      # 0-1
 # -----------------------------------------------------------------------------
 
@@ -75,15 +78,32 @@ stamp = hashlib.sha1(settings.encode()).hexdigest()
 stamp_file = DISPLAY / ".watermark"
 rebuild_all = not stamp_file.exists() or stamp_file.read_text().strip() != stamp
 
-files = [p for p in PHOTOS.iterdir() if p.suffix.lower() in EXTS] if PHOTOS.exists() else []
-files.sort(key=lambda p: (-added_time(p), p.name.lower()))
+files = []
+if PHOTOS.exists():
+    files = [p for p in PHOTOS.rglob("*")
+             if p.is_file() and p.suffix.lower() in EXTS
+             and not any(part.startswith(".") for part in p.relative_to(PHOTOS).parts)]
 
-items, keep = [], set()
+def section_of(p):
+    rel = p.relative_to(PHOTOS)
+    return rel.parts[0] if len(rel.parts) > 1 else ""
+
+times = {f: added_time(f) for f in files}
+groups = {}
 for f in files:
-    disp, thumb = DISPLAY / (f.stem + ".jpg"), THUMBS / (f.stem + ".jpg")
-    keep.add(disp.name)
+    groups.setdefault(section_of(f), []).append(f)
+
+keep = set()
+
+def process(f):
+    rel = f.relative_to(PHOTOS)
+    disp = DISPLAY / rel.parent / (f.stem + ".jpg")
+    thumb = THUMBS / rel.parent / (f.stem + ".jpg")
+    key = (disp.relative_to(DISPLAY)).as_posix()
     if rebuild_all or not disp.exists() or not thumb.exists():
         try:
+            disp.parent.mkdir(parents=True, exist_ok=True)
+            thumb.parent.mkdir(parents=True, exist_ok=True)
             im = ImageOps.exif_transpose(Image.open(f))
             if getattr(im, "n_frames", 1) > 1:
                 im.seek(0)
@@ -99,17 +119,35 @@ for f in files:
             t.thumbnail((THUMB_W, THUMB_W * 4), Image.LANCZOS)
             t.save(thumb, "JPEG", quality=80, optimize=True, progressive=True)
         except Exception as e:
-            print(f"skipping {f.name}: {e}")
-            keep.discard(disp.name)
-            continue
-    items.append({"src": quote(disp.as_posix()), "thumb": quote(thumb.as_posix())})
+            print(f"skipping {f}: {e}")
+            return None
+    keep.add(key)
+    return {"src": quote(disp.as_posix()), "thumb": quote(thumb.as_posix())}
+
+def title_of(folder):
+    return " ".join(folder.replace("_", " ").split())
+
+sections = []
+for folder, members in groups.items():
+    members.sort(key=lambda p: (-times[p], p.name.lower()))
+    photos = [x for x in (process(f) for f in members) if x]
+    if photos:
+        sections.append({"folder": folder, "title": title_of(folder),
+                         "newest": max(times[f] for f in members), "photos": photos})
+
+# loose photos first, then folders by their newest upload
+sections.sort(key=lambda s: (s["folder"] != "", -s["newest"], s["title"].lower()))
 
 # remove outputs for photos that were deleted
-for folder in (DISPLAY, THUMBS):
-    for p in folder.glob("*.jpg"):
-        if p.name not in keep:
+for root in (DISPLAY, THUMBS):
+    for p in root.rglob("*.jpg"):
+        if p.relative_to(root).as_posix() not in keep:
             p.unlink()
+    for d in sorted((d for d in root.rglob("*") if d.is_dir()), reverse=True):
+        if not any(d.iterdir()):
+            d.rmdir()
 
 stamp_file.write_text(stamp + "\n")
-Path("assets/photos.json").write_text(json.dumps(items, indent=2) + "\n")
-print(f"{len(items)} photos listed")
+out = {"sections": [{"title": s["title"], "photos": s["photos"]} for s in sections]}
+Path("assets/photos.json").write_text(json.dumps(out, indent=2) + "\n")
+print(f"{sum(len(s['photos']) for s in sections)} photos in {len(sections)} section(s)")
