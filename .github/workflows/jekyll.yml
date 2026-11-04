@@ -1,4 +1,8 @@
-name: Deploy static site to Pages
+name: Build gallery and deploy site
+
+# One workflow does everything: it builds the photo gallery from assets/photos/
+# and publishes the site. Nothing is committed back to the repo, so there are no
+# push conflicts and no second deploy. Needs Settings -> Pages -> Source = "GitHub Actions".
 
 on:
   push:
@@ -12,7 +16,7 @@ permissions:
 
 concurrency:
   group: "pages"
-  cancel-in-progress: false
+  cancel-in-progress: false   # a newer push replaces any older waiting run
 
 jobs:
   deploy:
@@ -23,12 +27,32 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0      # full history, so upload dates are known
+
+      - name: Install Pillow
+        run: pip install pillow
+
+      - name: Build gallery (watermark, thumbnails, photos.json)
+        run: |
+          # start clean so the gallery always matches assets/photos/ exactly
+          rm -rf assets/display assets/thumbs assets/photos.json
+          python3 .github/scripts/build_photos.py
+
+      - name: Assemble site (originals are not published)
+        run: |
+          mkdir _site
+          tar --exclude='./.git' --exclude='./.github' --exclude='./_site' \
+              --exclude='./assets/photos' -cf - . | tar -xf - -C _site
+
       - name: Setup Pages
         uses: actions/configure-pages@v5
+
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: '.'
+          path: _site
+
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
