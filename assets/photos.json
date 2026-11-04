@@ -4,6 +4,14 @@
       "title": "Kuala Lumpur",
       "photos": [
         {
+          "src": "assets/display/Kuala_Lumpur/DSC01584.jpg",
+          "thumb": "assets/thumbs/Kuala_Lumpur/DSC01584.jpg"
+        },
+        {
+          "src": "assets/display/Kuala_Lumpur/DSC01626.jpg",
+          "thumb": "assets/thumbs/Kuala_Lumpur/DSC01626.jpg"
+        },
+        {
           "src": "assets/display/Kuala_Lumpur/DSC00706.jpg",
           "thumb": "assets/thumbs/Kuala_Lumpur/DSC00706.jpg"
         },
