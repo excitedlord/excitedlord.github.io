@@ -1,6 +1,319 @@
 {
   "sections": [
     {
+      "title": "Singapore",
+      "photos": [
+        {
+          "src": "assets/display/Singapore/DSC01641.ARW.jpg",
+          "thumb": "assets/thumbs/Singapore/DSC01641.ARW.jpg"
+        },
+        {
+          "src": "assets/display/Singapore/DSC01643.jpg",
+          "thumb": "assets/thumbs/Singapore/DSC01643.jpg"
+        },
+        {
+          "src": "assets/display/Singapore/DSC01679.jpg",
+          "thumb": "assets/thumbs/Singapore/DSC01679.jpg"
+        },
+        {
+          "src": "assets/display/Singapore/DSC01708.jpg",
+          "thumb": "assets/thumbs/Singapore/DSC01708.jpg"
+        },
+        {
+          "src": "assets/display/Singapore/DSC01731.jpg",
+          "thumb": "assets/thumbs/Singapore/DSC01731.jpg"
+        },
+        {
+          "src": "assets/display/Singapore/DSC01754.jpg",
+          "thumb": "assets/thumbs/Singapore/DSC01754.jpg"
+        },
+        {
+          "src": "assets/display/Singapore/DSC01775.jpg",
+          "thumb": "assets/thumbs/Singapore/DSC01775.jpg"
+        },
+        {
+          "src": "assets/display/Singapore/DSC01779.jpg",
+          "thumb": "assets/thumbs/Singapore/DSC01779.jpg"
+        },
+        {
+          "src": "assets/display/Singapore/DSC01789.jpg",
+          "thumb": "assets/thumbs/Singapore/DSC01789.jpg"
+        },
+        {
+          "src": "assets/display/Singapore/DSC01801.ARW.jpg",
+          "thumb": "assets/thumbs/Singapore/DSC01801.ARW.jpg"
+        },
+        {
+          "src": "assets/display/Singapore/DSC01803.ARW.jpg",
+          "thumb": "assets/thumbs/Singapore/DSC01803.ARW.jpg"
+        },
+        {
+          "src": "assets/display/Singapore/DSC01812.ARW.jpg",
+          "thumb": "assets/thumbs/Singapore/DSC01812.ARW.jpg"
+        },
+        {
+          "src": "assets/display/Singapore/DSC01820.ARW.jpg",
+          "thumb": "assets/thumbs/Singapore/DSC01820.ARW.jpg"
+        },
+        {
+          "src": "assets/display/Singapore/DSC01835.jpg",
+          "thumb": "assets/thumbs/Singapore/DSC01835.jpg"
+        },
+        {
+          "src": "assets/display/Singapore/DSC01839.jpg",
+          "thumb": "assets/thumbs/Singapore/DSC01839.jpg"
+        },
+        {
+          "src": "assets/display/Singapore/DSC01872.ARW.jpg",
+          "thumb": "assets/thumbs/Singapore/DSC01872.ARW.jpg"
+        },
+        {
+          "src": "assets/display/Singapore/DSC01908.jpg",
+          "thumb": "assets/thumbs/Singapore/DSC01908.jpg"
+        },
+        {
+          "src": "assets/display/Singapore/DSC01934.jpg",
+          "thumb": "assets/thumbs/Singapore/DSC01934.jpg"
+        },
+        {
+          "src": "assets/display/Singapore/DSC01945.jpg",
+          "thumb": "assets/thumbs/Singapore/DSC01945.jpg"
+        },
+        {
+          "src": "assets/display/Singapore/DSC01963.jpg",
+          "thumb": "assets/thumbs/Singapore/DSC01963.jpg"
+        },
+        {
+          "src": "assets/display/Singapore/DSC02009.jpg",
+          "thumb": "assets/thumbs/Singapore/DSC02009.jpg"
+        },
+        {
+          "src": "assets/display/Singapore/DSC02010.ARW.jpg",
+          "thumb": "assets/thumbs/Singapore/DSC02010.ARW.jpg"
+        },
+        {
+          "src": "assets/display/Singapore/DSC02015.jpg",
+          "thumb": "assets/thumbs/Singapore/DSC02015.jpg"
+        },
+        {
+          "src": "assets/display/Singapore/DSC02018.jpg",
+          "thumb": "assets/thumbs/Singapore/DSC02018.jpg"
+        },
+        {
+          "src": "assets/display/Singapore/DSC02048.ARW.jpg",
+          "thumb": "assets/thumbs/Singapore/DSC02048.ARW.jpg"
+        },
+        {
+          "src": "assets/display/Singapore/DSC02055.ARW.jpg",
+          "thumb": "assets/thumbs/Singapore/DSC02055.ARW.jpg"
+        },
+        {
+          "src": "assets/display/Singapore/DSC02072.ARW.jpg",
+          "thumb": "assets/thumbs/Singapore/DSC02072.ARW.jpg"
+        },
+        {
+          "src": "assets/display/Singapore/DSC02079.ARW.jpg",
+          "thumb": "assets/thumbs/Singapore/DSC02079.ARW.jpg"
+        },
+        {
+          "src": "assets/display/Singapore/DSC02098.jpg",
+          "thumb": "assets/thumbs/Singapore/DSC02098.jpg"
+        },
+        {
+          "src": "assets/display/Singapore/DSC02251.jpg",
+          "thumb": "assets/thumbs/Singapore/DSC02251.jpg"
+        },
+        {
+          "src": "assets/display/Singapore/DSC02284.ARW.jpg",
+          "thumb": "assets/thumbs/Singapore/DSC02284.ARW.jpg"
+        },
+        {
+          "src": "assets/display/Singapore/DSC02344.ARW.jpg",
+          "thumb": "assets/thumbs/Singapore/DSC02344.ARW.jpg"
+        },
+        {
+          "src": "assets/display/Singapore/DSC02347.ARW.jpg",
+          "thumb": "assets/thumbs/Singapore/DSC02347.ARW.jpg"
+        },
+        {
+          "src": "assets/display/Singapore/DSC02365.ARW.jpg",
+          "thumb": "assets/thumbs/Singapore/DSC02365.ARW.jpg"
+        },
+        {
+          "src": "assets/display/Singapore/DSC02443.ARW.jpg",
+          "thumb": "assets/thumbs/Singapore/DSC02443.ARW.jpg"
+        },
+        {
+          "src": "assets/display/Singapore/DSC02476.ARW.jpg",
+          "thumb": "assets/thumbs/Singapore/DSC02476.ARW.jpg"
+        },
+        {
+          "src": "assets/display/Singapore/DSC02542.ARW.jpg",
+          "thumb": "assets/thumbs/Singapore/DSC02542.ARW.jpg"
+        },
+        {
+          "src": "assets/display/Singapore/DSC02556.ARW.jpg",
+          "thumb": "assets/thumbs/Singapore/DSC02556.ARW.jpg"
+        },
+        {
+          "src": "assets/display/Singapore/DSC02645.ARW.jpg",
+          "thumb": "assets/thumbs/Singapore/DSC02645.ARW.jpg"
+        },
+        {
+          "src": "assets/display/Singapore/DSC02705.ARW.jpg",
+          "thumb": "assets/thumbs/Singapore/DSC02705.ARW.jpg"
+        },
+        {
+          "src": "assets/display/Singapore/DSC02707.ARW.jpg",
+          "thumb": "assets/thumbs/Singapore/DSC02707.ARW.jpg"
+        },
+        {
+          "src": "assets/display/Singapore/DSC02711.ARW.jpg",
+          "thumb": "assets/thumbs/Singapore/DSC02711.ARW.jpg"
+        },
+        {
+          "src": "assets/display/Singapore/DSC02715.ARW.jpg",
+          "thumb": "assets/thumbs/Singapore/DSC02715.ARW.jpg"
+        },
+        {
+          "src": "assets/display/Singapore/DSC02743.ARW.jpg",
+          "thumb": "assets/thumbs/Singapore/DSC02743.ARW.jpg"
+        },
+        {
+          "src": "assets/display/Singapore/DSC02823.ARW.jpg",
+          "thumb": "assets/thumbs/Singapore/DSC02823.ARW.jpg"
+        },
+        {
+          "src": "assets/display/Singapore/DSC02875.ARW.jpg",
+          "thumb": "assets/thumbs/Singapore/DSC02875.ARW.jpg"
+        },
+        {
+          "src": "assets/display/Singapore/DSC02980.ARW.jpg",
+          "thumb": "assets/thumbs/Singapore/DSC02980.ARW.jpg"
+        },
+        {
+          "src": "assets/display/Singapore/DSC02989.ARW.jpg",
+          "thumb": "assets/thumbs/Singapore/DSC02989.ARW.jpg"
+        },
+        {
+          "src": "assets/display/Singapore/DSC02998.ARW.jpg",
+          "thumb": "assets/thumbs/Singapore/DSC02998.ARW.jpg"
+        },
+        {
+          "src": "assets/display/Singapore/DSC03007.ARW.jpg",
+          "thumb": "assets/thumbs/Singapore/DSC03007.ARW.jpg"
+        },
+        {
+          "src": "assets/display/Singapore/DSC03017.ARW.jpg",
+          "thumb": "assets/thumbs/Singapore/DSC03017.ARW.jpg"
+        },
+        {
+          "src": "assets/display/Singapore/DSC03054.ARW.jpg",
+          "thumb": "assets/thumbs/Singapore/DSC03054.ARW.jpg"
+        },
+        {
+          "src": "assets/display/Singapore/DSC03116.ARW.jpg",
+          "thumb": "assets/thumbs/Singapore/DSC03116.ARW.jpg"
+        },
+        {
+          "src": "assets/display/Singapore/DSC03123.ARW.jpg",
+          "thumb": "assets/thumbs/Singapore/DSC03123.ARW.jpg"
+        },
+        {
+          "src": "assets/display/Singapore/DSC03153.ARW.jpg",
+          "thumb": "assets/thumbs/Singapore/DSC03153.ARW.jpg"
+        },
+        {
+          "src": "assets/display/Singapore/DSC03170.ARW.jpg",
+          "thumb": "assets/thumbs/Singapore/DSC03170.ARW.jpg"
+        },
+        {
+          "src": "assets/display/Singapore/DSC03207.ARW.jpg",
+          "thumb": "assets/thumbs/Singapore/DSC03207.ARW.jpg"
+        },
+        {
+          "src": "assets/display/Singapore/DSC03222.ARW.jpg",
+          "thumb": "assets/thumbs/Singapore/DSC03222.ARW.jpg"
+        },
+        {
+          "src": "assets/display/Singapore/DSC03317.ARW.jpg",
+          "thumb": "assets/thumbs/Singapore/DSC03317.ARW.jpg"
+        },
+        {
+          "src": "assets/display/Singapore/DSC03339.ARW.jpg",
+          "thumb": "assets/thumbs/Singapore/DSC03339.ARW.jpg"
+        },
+        {
+          "src": "assets/display/Singapore/DSC03385.ARW.jpg",
+          "thumb": "assets/thumbs/Singapore/DSC03385.ARW.jpg"
+        },
+        {
+          "src": "assets/display/Singapore/DSC03464.ARW.jpg",
+          "thumb": "assets/thumbs/Singapore/DSC03464.ARW.jpg"
+        },
+        {
+          "src": "assets/display/Singapore/IMG_5183.jpg",
+          "thumb": "assets/thumbs/Singapore/IMG_5183.jpg"
+        },
+        {
+          "src": "assets/display/Singapore/IMG_5193.jpg",
+          "thumb": "assets/thumbs/Singapore/IMG_5193.jpg"
+        },
+        {
+          "src": "assets/display/Singapore/IMG_5218.jpg",
+          "thumb": "assets/thumbs/Singapore/IMG_5218.jpg"
+        },
+        {
+          "src": "assets/display/Singapore/IMG_5328.jpg",
+          "thumb": "assets/thumbs/Singapore/IMG_5328.jpg"
+        },
+        {
+          "src": "assets/display/Singapore/IMG_5370.jpg",
+          "thumb": "assets/thumbs/Singapore/IMG_5370.jpg"
+        },
+        {
+          "src": "assets/display/Singapore/IMG_5520.jpg",
+          "thumb": "assets/thumbs/Singapore/IMG_5520.jpg"
+        },
+        {
+          "src": "assets/display/Singapore/IMG_5671.jpg",
+          "thumb": "assets/thumbs/Singapore/IMG_5671.jpg"
+        },
+        {
+          "src": "assets/display/Singapore/IMG_5687.jpg",
+          "thumb": "assets/thumbs/Singapore/IMG_5687.jpg"
+        },
+        {
+          "src": "assets/display/Singapore/IMG_5703.jpg",
+          "thumb": "assets/thumbs/Singapore/IMG_5703.jpg"
+        },
+        {
+          "src": "assets/display/Singapore/IMG_5761.jpg",
+          "thumb": "assets/thumbs/Singapore/IMG_5761.jpg"
+        },
+        {
+          "src": "assets/display/Singapore/IMG_5793.jpg",
+          "thumb": "assets/thumbs/Singapore/IMG_5793.jpg"
+        },
+        {
+          "src": "assets/display/Singapore/IMG_5835.jpg",
+          "thumb": "assets/thumbs/Singapore/IMG_5835.jpg"
+        },
+        {
+          "src": "assets/display/Singapore/IMG_6026.jpg",
+          "thumb": "assets/thumbs/Singapore/IMG_6026.jpg"
+        },
+        {
+          "src": "assets/display/Singapore/IMG_6113.jpg",
+          "thumb": "assets/thumbs/Singapore/IMG_6113.jpg"
+        },
+        {
+          "src": "assets/display/Singapore/IMG_6969.jpg",
+          "thumb": "assets/thumbs/Singapore/IMG_6969.jpg"
+        }
+      ]
+    },
+    {
       "title": "Kuala Lumpur",
       "photos": [
         {
