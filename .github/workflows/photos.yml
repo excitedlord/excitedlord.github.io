@@ -3,10 +3,13 @@ name: Update photo gallery
 on:
   push:
     branches: [main]
-    paths:
-      - "assets/photos/**"
-      - ".github/scripts/**"
-      - ".github/workflows/photos.yml"
+    # Runs on every push, so the gallery is re-checked against assets/photos/ each
+    # time the site is deployed. (Skipped only when a push touches nothing but the
+    # generated files themselves.)
+    paths-ignore:
+      - "assets/display/**"
+      - "assets/thumbs/**"
+      - "assets/photos.json"
   workflow_dispatch:
 
 permissions:
