@@ -4,6 +4,10 @@
       "title": "Singapore",
       "photos": [
         {
+          "src": "assets/display/Singapore/DSC02054.jpg",
+          "thumb": "assets/thumbs/Singapore/DSC02054.jpg"
+        },
+        {
           "src": "assets/display/Singapore/DSC01831.jpg",
           "thumb": "assets/thumbs/Singapore/DSC01831.jpg"
         },
@@ -22,10 +26,6 @@
         {
           "src": "assets/display/Singapore/DSC01708.jpg",
           "thumb": "assets/thumbs/Singapore/DSC01708.jpg"
-        },
-        {
-          "src": "assets/display/Singapore/DSC01754.jpg",
-          "thumb": "assets/thumbs/Singapore/DSC01754.jpg"
         },
         {
           "src": "assets/display/Singapore/DSC01775.jpg",
