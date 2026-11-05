@@ -10,6 +10,7 @@ Photos placed directly in assets/photos/ appear first, with no title.
 Within a section the newest upload comes first. Sections are ordered by their newest
 upload too, unless you list folders in assets/photos/order.txt (one per line, top to
 bottom); listed folders come first in that order, the rest follow by newest upload.
+A line can also set the title shown on the site:   Kuala_Lumpur = Kuala Lumpur (March 2026)
 "Upload time" = the commit that first added the original file.
 """
 import hashlib, json, subprocess, time
@@ -140,21 +141,33 @@ for folder, members in groups.items():
         sections.append({"folder": folder, "title": title_of(folder),
                          "newest": max(times[f] for f in members), "photos": photos})
 
-# optional manual order: assets/photos/order.txt, one folder name per line
+# optional manual order and titles: assets/photos/order.txt
+#   Kuala_Lumpur                              (just the order)
+#   Kuala_Lumpur = Kuala Lumpur (March 2026)  (order + custom title)
 def norm(name):
     return " ".join(name.replace("_", " ").split()).lower()
 
-order = []
+order, custom_titles = [], {}
 order_file = PHOTOS / "order.txt"
 if order_file.exists():
     for line in order_file.read_text(encoding="utf-8-sig").splitlines():
         line = line.strip()
-        if line and not line.startswith("#"):
-            order.append(norm(line))
+        if not line or line.startswith("#"):
+            continue
+        name, sep, title = line.partition("=")
+        key = norm(name)
+        if not key:
+            continue
+        order.append(key)
+        if sep and title.strip():
+            custom_titles[key] = " ".join(title.split())
 
 def rank(sec):
     n = norm(sec["folder"])
     return order.index(n) if n in order else len(order)
+
+for sec in sections:
+    sec["title"] = custom_titles.get(norm(sec["folder"]), sec["title"])
 
 # loose photos first, then listed folders in your order, then the rest by newest upload
 sections.sort(key=lambda s: (s["folder"] != "", rank(s), -s["newest"], s["title"].lower()))

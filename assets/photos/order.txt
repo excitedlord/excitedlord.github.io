@@ -1,5 +1,6 @@
-Singapore
-Kuala_Lumpur
-Delhi
-Vadodara
-Sydney
+Singapore = Singapore (Oct 2026)
+Kuala_Lumpur = Kuala Lumpur, Malaysia (Oct 2026)
+Himachal = Shimla, Himachal (Dec 2025)
+Delhi = Delhi (Dec 2025)
+Vadodara = Vadodara, Gujarat (Dec 2025)
+Sydney = (Sep - Oct 2025)
